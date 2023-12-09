@@ -1,0 +1,131 @@
+.content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.container {
+    display: flex;
+}
+
+.content {
+    max-width: 700px;
+    display: inline-block;
+    margin-top: 1%;
+    flex: 1;
+}
+
+.map {
+    width: 100%; /* 100% ширина, чтобы занять всю ширину страницы */
+    justify-content: flex-end; 
+    align-items: center;
+    display: inline-block;
+    margin-left: 200px;
+    width: 52%;
+    flex: 1;
+}
+
+/* Стили для тега <body>, чтобы убрать отступы */
+html {
+    background-image: url('../../public/parking.jpg'); /* Путь к изображению фона */
+    background-size: cover; /* Заполнение всей видимой области экрана */
+    background-position: center; /* Выравнивание по центру */
+    background-attachment: fixed; /* Фиксированный фон (не прокручивается) */
+}
+
+body {
+    font-family: Arial, sans-serif; /* Пример стиля шрифта */
+    color: #333; /* Цвет текста */
+    padding: 20px; /* Внутренние отступы для контента */
+}
+
+.content {
+    color: #fff;
+    background-color: #333;
+    border-radius: 5px;
+    padding: 10px;
+    margin-top: 1%;
+}
+
+/* Стили для тега <img>, чтобы заполнить всю страницу */
+img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Чтобы изображение заполнило всю доступную площадь без искажений */
+    position: fixed; /* Фиксированная позиция, чтобы изображение не прокручивалось */
+    top: 0;
+    left: 0;
+}
+
+header {
+    background-color: #333; /* Цвет фона */
+    color: #fff; /* Цвет текста */
+    padding: 10px 0; /* Внутренний отступ в верхней и нижней части */
+    text-align: center; /* Выравнивание по центру */
+    border-radius: 5px;
+}
+
+/* Стили для выпадающих текстов */
+.dropdown {
+    position: relative;
+    display: inline-block;
+    margin-right: 50px;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #333;
+    min-width: 160px;
+    z-index: 1;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+/* Стили для логотипа */
+.logo {
+    max-width: 130px; /* Максимальная ширина логотипа */
+    max-height: 100px;
+    margin-top: 35px; /* Отступ сверху */
+    margin-left: 100px;
+    border-radius: 5px;
+    position: absolute;
+}
+
+.button {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    margin-top: 35px;
+    background-color: #3b4044; /* Цвет фона кнопки */
+    color: #fff; /* Цвет текста */
+    border: none; /* Убираем границу */
+    border-radius: 5px; /* Закругляем углы */
+    text-align: center;
+    text-decoration: none; /* Убираем подчеркивание текста */
+    cursor: pointer;
+    transition: background-color 0.3s ease; /* Плавное изменение цвета фона при наведении */
+}
+
+.button:hover {
+    background-color: #1e87e4; /* Новый цвет фона при наведении */
+    color: #fff; /* Новый цвет текста при наведении */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); /* Тень при наведении */
+}
+
+.button:active {
+    background-color: #0d6cb8; /* Новый цвет фона при нажатии кнопки */
+}
+
+.button:focus {
+    outline: none; /* Убираем контур при фокусе */
+}
+
+.button:disabled {
+    background-color: #ccc; /* Цвет фона для отключенной кнопки */
+    color: #999; /* Цвет текста для отключенной кнопки */
+    cursor: not-allowed; /* Запрещаем курсору изменяться при наведении на отключенную кнопку */
+}
+
