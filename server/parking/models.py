@@ -40,3 +40,4 @@ class Employee(models.Model):
                                 on_delete=models.SET_NULL, null=True)
     login = models.CharField(max_length=255, unique=True)
     password = models.CharField(max_length=255)
+    type = models.CharField(max_length=20)
