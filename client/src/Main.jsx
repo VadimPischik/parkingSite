@@ -49,7 +49,7 @@ export default function Main() {
             </div>
             <iframe src="https://yandex.ru/map-widget/v1/?um=constructor%3Ab8f79ed37fe79b1aa9cc90e3b920d0c0d7a1bd2ba43c187e7254a4f2c23d0ef7&amp;source=constructor" width="100%" height="400" frameborder="0"></iframe>        </div>
         {/* <button className="button" onClick = "document.location.href= 'sellMenu.html'">Вход для сотрудника</button> */}
-        <a className="button" href="/login">Вход для сотрудника</a>
+        {/* <a className="button" href="/login">Вход для сотрудника</a> */}
     </div>
     );
 }
