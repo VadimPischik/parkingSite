@@ -25,8 +25,9 @@ SECRET_KEY = 'django-insecure-cr1-7g2+=#t9o2r*(dw6*$_2r*g%ik0tc6&e@ky(-=2sal-tht
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["chrome-extension://amknoiejhlmhancpahfcfcfhllgkpbld", "localhost"]
 
+CORS_ALLOWED_ORIGINS=["chrome-extension://amknoiejhlmhancpahfcfcfhllgkpbld"]
 
 # Application definition
 

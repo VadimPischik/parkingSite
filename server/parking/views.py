@@ -19,7 +19,7 @@ class ClientViewSet(viewsets.ModelViewSet):
     serializer_class = ser.ClientSerializer
     queryset = mod.Client.objects.all()
 
-    @action(methods=["GET"], detail=False)
+    @action(methods=["GET"], detail=False, url_path="login/(?P<login>[^/.]+)/(?P<password>[^/.]+)")
     def login(self, request, login, password):
         try:
            us =  mod.Client.objects.get(login=login)
@@ -31,17 +31,18 @@ class ClientViewSet(viewsets.ModelViewSet):
         res = ser.ClientSerializer(us)
         return Response(res.data, status=status.HTTP_200_OK)
     
-    @action(methods=["POST"], detail=False)
+    @action(methods=["POST"], detail=False, url_path="register/(?P<login>[^/.]+)/(?P<password>[^/.]+)")
     def register(self, request, login, password):
         try:
-           user = ser.ClientSerializer(data=request.body)
-        except:
+           user = self.request.data
+           print(user)
+        except Exception as e:
             return Response("Некорректный body запроса", 
                             status=status.HTTP_400_BAD_REQUEST)
-        if mod.Client.objects.contains(login = login):
+        if mod.Client.objects.filter(login = login).count():
             return Response("Пользователь с таким логином существует", 
                             status=status.HTTP_400_BAD_REQUEST)
-        mod.Client(name = user.name, 
+        mod.Client(name = user["name"], phone = user["phone"],
                      login=login, password=password).save()
         return Response(status=status.HTTP_201_CREATED)
 
@@ -57,7 +58,7 @@ class EmployeeViewSet(viewsets.ModelViewSet):
     serializer_class = ser.EmployeeSerializer
     queryset = mod.Employee.objects.all()
 
-    @action(methods=["GET"], detail=False)
+    @action(methods=["GET"], detail=False, url_path="login/(?P<login>[^/.]+)/(?P<password>[^/.]+)")
     def login(self, request, login, password):
         try:
            us =  mod.Employee.objects.get(login=login)
@@ -69,16 +70,21 @@ class EmployeeViewSet(viewsets.ModelViewSet):
         res = ser.EmployeeSerializer(us)
         return Response(res.data, status=status.HTTP_200_OK)
     
-    @action(methods=["POST"], detail=False)
+    @action(methods=["POST"], detail=False, url_path="register/(?P<login>[^/.]+)/(?P<password>[^/.]+)")
     def register(self, request, login, password):
         try:
-           user = ser.EmployeeSerializer(data=request.body)
+           user = self.request.data
         except:
             return Response("Некорректный body запроса", 
                             status=status.HTTP_400_BAD_REQUEST)
-        if mod.Employee.objects.contains(login = login):
+        if mod.Employee.objects.filter(login = login).count():
             return Response("Пользователь с таким логином существует", 
                             status=status.HTTP_400_BAD_REQUEST)
-        mod.Employee(name = user.name, parking = user.parking, 
+        try:
+            parking = mod.Parking.objects.get(pk= user["parking"])
+        except:
+            return Response("Нет парковки с таким id", 
+                            status=status.HTTP_400_BAD_REQUEST)
+        mod.Employee(name = user["name"], parking = parking,type = user["type"],
                      login=login, password=password).save()
         return Response(status=status.HTTP_201_CREATED)
