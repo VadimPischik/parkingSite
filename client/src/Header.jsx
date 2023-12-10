@@ -2,21 +2,45 @@
 export default function Header() {
     return (
         <header>
-            <img src="iconlogo.jpg" alt="logo" className="logo" />
-            <h1>Автостоянки Москвы</h1>
-            <div className="dropdown">
-                <span>Парковки</span>
-                <div className="dropdown-content">
-                    <p>метро Смоленская</p>
-                    <p>метро Нижегородская</p>
-                    <p>метро ЦСКА</p>
-                </div>
-            </div>
+            <div className="header_text">
+            <a href="/" className="headerlogo"><img src="iconlogo.jpg" alt="logo" /></a>
+                <h1><a href="/">Автостоянки Москвы</a></h1>
+                <div className="header_links">
+                    {/* <div className="dropdown">
+                        <span>Парковки</span>
+                        {/* <div className="dropdown-content">
+                            <p>метро Смоленская</p>
+                            <p>метро Нижегородская</p>
+                            <p>метро ЦСКА</p>
+                        </div> */}
 
-            <div className="dropdown">
-                <span>Контакты</span>
-                <div className="dropdown-content">
-                    <p>Содержимое выпадающего текста 2</p>
+                    <div className="dropdown">
+                        <a href="/rent">Аренда</a>
+                        {/* <div className="dropdown-content">
+                            <p>Содержимое выпадающего текста 2</p>
+                        </div> */}
+                    </div>
+
+                    <div className="dropdown">
+                        <a href="/autorize">Вход для клиента</a>
+                        {/* <div className="dropdown-content">
+                            <p>Содержимое выпадающего текста 2</p>
+                        </div> */}
+                    </div>
+
+                    <div className="dropdown">
+                        <a href="">Вход для сотрудника</a>
+                        {/* <div className="dropdown-content">
+                            <p>Содержимое выпадающего текста 2</p>
+                        </div> */}
+                    </div>
+
+                    <div className="dropdown">
+                        <a href="/#contacts">Контакты</a>
+                        {/* <div className="dropdown-content">
+                            <p>Содержимое выпадающего текста 2</p>
+                        </div> */}
+                    </div>
                 </div>
             </div>
         </header>
