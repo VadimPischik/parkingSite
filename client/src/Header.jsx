@@ -1,3 +1,5 @@
+import { HashLink as Link } from "react-router-hash-link";
+import getUrl from "./getUrl";
 
 export default function Header() {
     return (
@@ -29,14 +31,14 @@ export default function Header() {
                     </div>
 
                     <div className="dropdown">
-                        <a href="">Вход для сотрудника</a>
+                        <a href={getUrl('/admin')}>Вход для сотрудника</a>
                         {/* <div className="dropdown-content">
                             <p>Содержимое выпадающего текста 2</p>
                         </div> */}
                     </div>
 
                     <div className="dropdown">
-                        <a href="/#contacts">Контакты</a>
+                        <Link to="/#contacts">Контакты</Link>
                         {/* <div className="dropdown-content">
                             <p>Содержимое выпадающего текста 2</p>
                         </div> */}

@@ -640,6 +640,9 @@ footer {
 }
 
 .account_inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
     input {
         margin: 0.5vw 0;
         width: 15vw;
@@ -665,8 +668,55 @@ footer {
 
 }
 .account_data {
+
 }
+
 .client {
+    width: 40vw;
+    background: #333;
+    border-radius: 5px;
+    padding: 3vw;
+    form {
+        width: 100%;
+    }
 }
+
+.form_line {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 1vw 0;
+}
+
 .places {
+    width: 40vw;
+    margin: 3vw 0;
+    border-radius: 5px;
+    background-color: #333;
+    padding: 3vw;
+}
+
+.account_btns {
+    background-color: #333;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    padding: 3vw;
+    height: auto;
+    span {
+        display: block;
+        text-align: center;
+        background-color: #fff;
+        color: #000;
+        font-weight: bold;
+        padding: 0.5vw;
+        border-radius: 5px;
+        width: 15vw;
+        margin-bottom: 3vw;
+        &:hover {
+            cursor: pointer;
+        }
+    }
 }

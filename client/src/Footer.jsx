@@ -23,9 +23,7 @@ export default function Footer() {
                 </div>
                 <div className="footer_item">
                     <div className="footer_h">Информация</div>
-                    <a href="/about">Контакты</a>
-                    <a href="/about">Наш адрес</a>
-                    <a href="/about">Доставка и оплата</a>
+                    <a href="/#contacts">Контакты</a>
                 </div>
             </div>
             <div className="copyright">

@@ -107,53 +107,6 @@ export default function Autorize() {
         </div>
         );
     } else {
-        var client = cookies.get('client');
-        function clientSave(event) {
-            event.preventDefault();
-            var f = document.getElementById('client');
-            var i = f.getElementsByTagName('input');
-            if (re.test(i[1].value)) {
-                var data = {
-                    "name": i[0].value,
-                    "phone": i[1].value
-                };
-                axios.put(getUrl(`/api/client/${client.id}/`), data)
-                .then(function (response) {
-                    console.log(response.data);
-                    if (response.status == 200) {
-                        setLog("Данные сохранены");
-                    }
-                    var cl = response.data;
-                    cl['login'] = i[0].value;
-                    cl['password'] = i[1].value;
-                    cookies.set("client", response.data, { path: '/' });
-                })
-                .catch(function (error) {
-                    console.log(error);
-                    setLog("Что-то пошло не так");
-                    });
-            }
-        }
-
-        
-        return(
-            <div className="account">
-                <div className="account_inner">
-                    <div className="account_data">
-                        <div className="client">
-                            <form name="client" id="client" onSubmit={(event) => clientSave(event)}>
-                                Имя: {client.name} <input type="text" placeholder="Новое имя"/> <br />
-                                Телефон: {client.phone} <input type="tel" placeholder="Новый телефон"/> <br />
-                                <input type="submit" value="Сохранить"/> <span> {logText}</span>
-                            </form>
-                        </div>
-                        <div className="places">
-
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        );
-    }
+        document.location.href = '/account';
+    } 
 }
