@@ -3,7 +3,7 @@ from rest_framework.response import Response
 from rest_framework.decorators import action
 import parking.serializers as ser
 import parking.models as mod
-import json
+from django.core.exceptions import ObjectDoesNotExist
 # Create your views here.
 
 
@@ -54,6 +54,17 @@ class AutoViewSet(viewsets.ModelViewSet):
     serializer_class = ser.AutoSerializer
     queryset = mod.Auto.objects.all()
 
+    @action(methods= ["GET"], detail=False, url_path="byclient/(?P<user_id>[^/.]+)")
+    def get_cars_by_user(self, request, user_id):
+        try:
+            user = mod.Client.objects.get(pk = user_id)
+        except ObjectDoesNotExist:
+            return Response("Нет пользователя с таким id", 
+                            status=status.HTTP_404_NOT_FOUND)
+        cars = mod.Auto.objects.filter(owner=user)
+        data = ser.AutoSerializer(cars, many=True)
+        return Response(data.data, status=status.HTTP_200_OK)
+        
 class EmployeeViewSet(viewsets.ModelViewSet):
     serializer_class = ser.EmployeeSerializer
     queryset = mod.Employee.objects.all()
