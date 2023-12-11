@@ -25,6 +25,7 @@ class ClientSerializer(serializers.ModelSerializer):
         model = mod.Client
         #fields = "__all__"
         exclude  = ["login", "password"]
+     
 
 class EmployeeSerializer(serializers.ModelSerializer):
 

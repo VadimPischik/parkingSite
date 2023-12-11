@@ -31,6 +31,8 @@ class Auto(models.Model):
     place = models.ForeignKey(ParkingPlace, to_field="id", 
                                on_delete=models.SET_NULL, null=True)
     owner = models.ForeignKey(Client, to_field="id", on_delete=models.CASCADE)
+    
+    model = models.CharField(max_length=255)
 
 
 class Employee(models.Model):
