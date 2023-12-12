@@ -74,6 +74,7 @@ export default function(props) {
             .then(function (response) {
                 var park;
                 if (response.status == 200) {
+                    console.log(response.data);
                     setParkObj(response.data);
                     park = response.data.map((item) => (<option key={item.id}> {item.address}</option>));
                     setPark(park);
