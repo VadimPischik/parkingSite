@@ -1,6 +1,13 @@
 from rest_framework import serializers
 import parking.models as mod
 
+class ParkingPlaceSerializer(serializers.ModelSerializer):
+    
+    class Meta:
+        model = mod.ParkingPlace
+        fields = "__all__"
+
+
 class ParkingSerializer(serializers.ModelSerializer):
 
     class Meta:
@@ -11,12 +18,16 @@ class ParkingSerializer(serializers.ModelSerializer):
     total_places =  serializers.SerializerMethodField("total")
 
     def free(self, obj):
-        handled = mod.Auto.objects.filter(place__parking = obj).count()
-        total = self.total(obj)
-        return total - handled
+        handled = {i.place for i in 
+                   mod.Auto.objects.select_related("place").filter(place__parking = obj)}
+        all = {i for i in  mod.ParkingPlace.objects.exclude(parking=obj)}
+        free = all - handled
+
+        return  [ParkingPlaceSerializer(i).data for i in free]
 
     def total(self, obj):
-        return mod.ParkingPlace.objects.filter(parking=obj).count()
+        return [ParkingPlaceSerializer(i).data for i in 
+                mod.ParkingPlace.objects.filter(parking=obj)]
     
 
 class ClientSerializer(serializers.ModelSerializer):
@@ -47,11 +58,3 @@ class AutoSerializer(serializers.ModelSerializer):
         fields = "__all__"
 
 
-class ParkingPlaceSerializer(serializers.ModelSerializer):
-    
-    class Meta:
-        model = mod.ParkingPlace
-        fields = "__all__"
-
-
-    
