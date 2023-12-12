@@ -29,7 +29,7 @@ class Auto(models.Model):
     tarif = models.ForeignKey(Tariff, to_field="id", 
                               on_delete=models.SET_NULL, null=True)
     place = models.ForeignKey(ParkingPlace, to_field="id", 
-                               on_delete=models.SET_NULL, null=True)
+                               on_delete=models.SET_NULL, null=True, unique=True)
     owner = models.ForeignKey(Client, to_field="id", on_delete=models.CASCADE)
     
     model = models.CharField(max_length=255)
