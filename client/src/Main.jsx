@@ -1,5 +1,15 @@
 import Benefits from './Benefits';
+import Cookies from 'universal-cookie';
+
 export default function Main() {
+    var cookies = new Cookies(null, { path: '/' });
+    function rent() {
+        if (cookies.get('client', {path: '/'})) {
+            document.location.href = '/rent';
+        } else {
+            document.location.href = '/autorize';
+        }
+    }
     return (
     <div className="main">
         {/* <button className="button" onClick = "document.location.href= 'clientp.html'">Арендовать парковочное место</button> */}
@@ -11,11 +21,11 @@ export default function Main() {
                     <div className="right_inner20"></div>
                     <div className="right_inner21"></div>
                     <div className="right_inner22"></div>
-                        <a href="/autorize" className="right_inner3">
+                        <span onClick={rent} className="right_inner3">
                             Арендовать <br />
                             парковочное <br />
                             место
-                        </a>
+                        </span>
                 </div>
             </div>
         </div>

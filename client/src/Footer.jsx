@@ -18,7 +18,7 @@ export default function Footer() {
                     </a>
                     <a href="mailto:parkovki@gmail.com" className="footer_link">
                         <div className="footer_imga mail"></div>
-                        <div className="footer_texta">parkovki@gmail.ru</div>
+                        <div className="footer_texta">parkovki@gmail.com</div>
                     </a>
                 </div>
                 <div className="footer_item">

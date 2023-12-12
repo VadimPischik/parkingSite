@@ -720,3 +720,69 @@ footer {
         }
     }
 }
+
+.car {
+    width: 100%;
+    border-bottom: 1px solid #fff;
+    margin-bottom: 3vw;
+    input {
+        width: 15vw;
+        padding: 0.5vw;
+        margin: 0.5vw;
+    }
+}
+
+.car_block {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.car .car_block:nth-child(1) {
+    justify-content: flex-start;
+}
+
+.car_item {
+    margin: 1vw 0;
+}
+
+.car_block_text {
+}
+
+.car_del {
+    width: 10%;
+    height: 100%;
+    img {
+        margin: auto;
+        width: 100%;
+        height: auto;
+        &:hover {
+            cursor: pointer;
+        }
+    }
+}
+
+.car_changer {
+    display: flex;
+    width: 100%;
+    input, select, option {
+        width: 15vw;
+        margin: 0.5vw;
+        color: #000;
+        padding: 0.5vw;
+        border-radius: 5px;
+    }
+
+    .form_search_line {
+        display: flex;
+        align-items: center;
+        img {
+            width: 2vw;
+            height: auto;
+            margin: 0 0.5vw;
+            &:hover {
+                cursor: pointer;
+            }
+        }
+    }
+}

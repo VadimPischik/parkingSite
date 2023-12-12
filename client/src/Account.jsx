@@ -66,15 +66,13 @@ export default function Account() {
     }
 
     useEffect(() => {
-        axios.get(getUrl(`/api/auto/`))
+        axios.get(getUrl(`/api/auto/byclient/${client.id}/`))
         .then(function (response) {
             if (response.status == 200) {
                 cars = response.data;
-                console.log(cars[0]);
                 cars = cars.map((item, index) => (<Car data={item} key={index}/>));
                 setCars(cars);
             }
-            console.log(cars);
             // var cl = response.data;
             // cl['login'] = i[0].value;
             // cl['password'] = i[1].value;
