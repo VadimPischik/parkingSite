@@ -730,6 +730,9 @@ footer {
         padding: 0.5vw;
         margin: 0.5vw;
     }
+    img:hover {
+        cursor: pointer;
+    }
 }
 
 .car_block {
@@ -765,12 +768,16 @@ footer {
 .car_changer {
     display: flex;
     width: 100%;
-    input, select, option {
+    input, .select, option {
         width: 15vw;
         margin: 0.5vw;
         color: #000;
         padding: 0.5vw;
         border-radius: 5px;
+    }
+
+    .select {
+        color: #fff;
     }
 
     .form_search_line {
@@ -785,4 +792,23 @@ footer {
             }
         }
     }
+}
+
+.car_adder {
+    display: block;
+    form input {
+        margin: 0.5vw;
+    }
+}
+
+.car_adder_h {
+    width: 100%;
+    font-size: 1.3vw;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 1vw;
+}
+
+.car_adder {
+    margin-top: 3vw;
 }

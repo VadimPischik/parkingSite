@@ -16,12 +16,12 @@ export default function Header() {
                             <p>метро ЦСКА</p>
                         </div> */}
 
-                    <div className="dropdown">
+                    {/* <div className="dropdown">
                         <a href="/rent">Аренда</a>
-                        {/* <div className="dropdown-content">
+                        <div className="dropdown-content">
                             <p>Содержимое выпадающего текста 2</p>
-                        </div> */}
-                    </div>
+                        </div>
+                    </div> */}
 
                     <div className="dropdown">
                         <a href="/autorize">Вход для клиента</a>

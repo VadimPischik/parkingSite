@@ -4,11 +4,7 @@ import Cookies from 'universal-cookie';
 export default function Main() {
     var cookies = new Cookies(null, { path: '/' });
     function rent() {
-        if (cookies.get('client', {path: '/'})) {
-            document.location.href = '/rent';
-        } else {
-            document.location.href = '/autorize';
-        }
+        document.location.href = '/autorize';
     }
     return (
     <div className="main">

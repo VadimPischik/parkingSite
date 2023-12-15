@@ -3,6 +3,7 @@ import axios from 'axios';
 import getUrl from './getUrl';
 import Cookies from 'universal-cookie';
 import Car from "./Car";
+import search from "./Search";
 
 export default function Account() {
     const cookies = new Cookies(null, { path: '/' });
@@ -10,8 +11,8 @@ export default function Account() {
     const [logText, setLog] = useState('');
     const [btnsText, setBtns] = useState('');
     const [carsObj, setCars] = useState([]);
+    const [cars, setData] = useState([]);
     var re = /^[\+][\d\ ]{10,15}\d$/;
-    var cars = [];
     function clientSave(event) {
         event.preventDefault();
         var f = document.getElementById('client');
@@ -69,9 +70,8 @@ export default function Account() {
         axios.get(getUrl(`/api/auto/byclient/${client.id}/`))
         .then(function (response) {
             if (response.status == 200) {
-                cars = response.data;
-                cars = cars.map((item, index) => (<Car data={item} key={index}/>));
-                setCars(cars);
+                setData(response.data);
+                setCars(response.data.map((item, index) => (<Car data={item} key={index}/>)));
             }
             // var cl = response.data;
             // cl['login'] = i[0].value;
@@ -84,8 +84,40 @@ export default function Account() {
     }
     , []);
 
-    // for (let i = 0; i < cars.length; i++) {
-    //     console.log(cars[i]);
+    function addCar(event) {
+        event.preventDefault();
+        var input = event.target.getElementsByTagName('input')[0];
+        var newCar = {
+            'model': input.value,
+            'tarif': null,
+            'place': null,
+            'owner': client.id,
+        };
+
+        axios.post(getUrl(`/api/auto/`), newCar)
+        .then(function (response) {
+            if (response.status == 201) {
+                window.scroll(0, 500);
+                window.location.reload();
+            }
+        })
+        .catch(function (error) {
+            console.log(error);
+        });
+    }
+
+    // function search(event, obj, fields, f) {
+    //     var v = event.target.previousSibling.value.toString().toLowerCase();
+    //     var newObj = '';
+    //     if (v != undefined)
+    //         newObj = obj.filter((item) => {
+    //             for (let i = 0; i < fields.length; i++) {
+    //                 if (item[fields[i]].toString().toLowerCase().indexOf(v) >= 0)
+    //                     return true;
+    //             }
+    //         });
+    //     newObj = newObj.map((item, index) => (<option   key={item.id} id={item.id}> {fields.length > 1 ? item[fields[1]] : ''} {item[fields[0]]}</option>));
+    //     f(newObj);
     // }
     
     return(
@@ -105,9 +137,29 @@ export default function Account() {
                             </div>
                         </form>
                     </div>
+                    <div className="car_adder car_block client">
+                        <div className="car_changer">
+                            <div className="form_data">
+                                <div className="car_adder_h">Выберите машину для поиска</div>
+                                <div className="places_search form_search_line">
+                                    <input type="text" placeholder="Поиск" name="car_search"/>
+                                    <img src="search.png" alt="search" onClick={(event) => search(event, cars, ['model'], setCars)}/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     <div className="places">
                         {carsObj}
                     </div>
+                    <div className="car_adder car_block client">
+                        <div className="car_adder_h">
+                            Добавьте новое авто
+                        </div>
+                        <form className="car_adder" onSubmit={(event) => addCar(event)}>
+                            <input type="text" placeholder="Машина"/>
+                            <input type="submit" value="Добавить"/>
+                        </form>
+                    </div> 
                 </div>
                 <div className="account_btns">
                     <span onClick={logOut}>Выйти</span> 
