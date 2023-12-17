@@ -65,7 +65,7 @@ export default function(props) {
                 var tarifs;
                 if (response.status == 200) {
                     setTarifObj(response.data);
-                    tarifs = response.data.map((item, index) => (<option   key={item.id} id={item.id} index={index}>{item.price} {item.description}</option>));
+                    tarifs = response.data.map((item, index) => (<option key={item.id} id={item.id} index={index}>{item.description} {item.price} руб. </option>));
                     setTarifs(tarifs);
                 }
             })
@@ -204,7 +204,7 @@ export default function(props) {
                     </div>
                     <div className="car_item">
                         <span>Цена: </span>
-                        <span>{tariff.price}</span>
+                        <span>{tariff.price} руб.</span>
                     </div>
                     <div className="car_item">
                         <span>Парковочное место: </span>
